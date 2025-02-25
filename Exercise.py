@@ -10,33 +10,27 @@
 # # Solve for 4 disks
 # hanoi(4, 1, 2, 3)
 
-# def insertion(e, s):
-#     for i in range(len(s) + 1):
-#         yield s[:i] + [e] + s[i:]
-
-# def perm(s):
-#     if s == []:
-#         yield []
-#     else:
-#         e, s1 = s[0], s[1:]
-#         for s1p in perm(s1):
-#             for p in insertion(e, s1p):
-#                 yield p
-
-# for p in perm([1,2,3]):  
-#     print(p)  # Output: all possible orderings of [1,2,3]
-
-
-
-
-
-
 # Ok lets do and create permutation for on list [1,2,3,4]
+# Permutations (Recursive) Example
 
 # select one form the list 
+def changer(e,s):
+    for i in range(len(s)+1):
+        change = s[:i] + [e] + s[i:]
+        yield change
+
 def my_list(list_asli):
-    for i in list_asli:
-        print(i)
+    if list_asli == []:
+        yield []
+    else:
+        e = list_asli[0]
+        s1 = list_asli[1:]
+        for s2 in my_list(s1):
+            for p in changer(e, s2):
+                yield(p)
 
 # Calling the function with a list
-my_list([1, 2, 3, 4])
+for s in my_list([1, 2, 3, 4]):
+    print(s)
+# my_list([1, 2])
+# my_list([1])
