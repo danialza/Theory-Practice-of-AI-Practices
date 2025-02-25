@@ -34,3 +34,6 @@ for s in my_list([1, 2, 3, 4]):
     print(s)
 # my_list([1, 2])
 # my_list([1])
+
+
+# Cow & Sheep
