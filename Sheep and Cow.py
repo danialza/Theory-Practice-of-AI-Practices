@@ -34,19 +34,14 @@ def main(stable):
         temp_stable[m],temp_stable[empty]= temp_stable[empty],temp_stable[m]
         yield temp_stable
                    
-def recursion(stable):
-    #Base Case
-    if stable == goal_stable:
-        print("We Got The Answer")
+def recirsion(stable):
+    if stable == goal_stable :
+        print("We Are Done")
         return [stable]
-    for stable in main(stable):
-       sol = recursion(stable)
-       if sol:
-           return [stable] + sol
+    for temp_stable in main(stable):
+        sol = recirsion(temp_stable)
+        if sol:
+            return [stable] + sol 
 
-for s in recursion(start_stable):
-    print (s)
-
-
-# if __name__ == "__main__" :
-#     recursion(stable=start_stable)
+for s in recirsion(start_stable):
+    print(s)
