@@ -56,8 +56,8 @@ def game():
         player1, player2 = player2,player1
     print (f"Player {player1} has lost!! Sorry")
 
-    
-game()
+# Game Runner     
+# game()
 
 
 
@@ -124,3 +124,42 @@ game()
 #         n -= taken # update heap
 #         current, other = other, current # now it’s the other player’s turn
 #         print("%s has lost." % current)
+
+
+# 1.2
+
+def sort4(x,y,z,u):
+    if x>y:
+        x,y = y,x
+    if z>u:
+        z,u = u,z
+    if y>u:
+        y,u = u,y
+    if x>z:
+        x,z=z,x
+    if y>z:
+        y,z=z,y
+    return x,y,z,u
+
+print(sort4(20,30,10,30))
+
+def insertion(e, s):
+    for i in range(len(s)+1):
+        yield s[:i] + [e] + s[i:]
+
+def perm(s):
+    if s == []:
+        yield []
+    else:
+        e, s1 = s[0], s[1:]
+        for s1p in perm(s1):
+            for p in insertion(e,s1p):
+                yield p
+
+# for p in perm([1,2,3,4]): print(p)
+
+fourlist = list(range(1,4+1))
+print (fourlist)
+for unsorted in perm(fourlist):
+    s = list(sort4(*unsorted)) # unpack
+    print("Unsorted:", unsorted, "Sorting","Ok" if s == fourlist else "Wrong!")
